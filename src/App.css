@@ -1,22 +1,80 @@
-.App {
-  text-align: center;
+* {
+  margin:0;
+  padding:0;
 }
 
-.App-logo {
-  height: 40vmin;
+@font-face {
+  font-family: 'MyFont1';
+  src: url('GillSansStd.otf'); /* IE9 Compat Modes */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body{
+  background: #333;
+  font-family: 'MyFont1', Montserrat, sans-serif;
+  color:#BFBFBF;
 }
 
-.App-link {
-  color: #09d3ac;
+/* UTIL */
+.grey_normal, .grey_normal_link{
+  color: #BFBFBF;
+  font-size:1.2em;
+}
+.grey_normal_link:hover{
+  color: rgb(158, 157, 157);
+  text-decoration: none;
+}
+.white_normal, .white_normal_link{
+  color: #fff;
+  font-size:1.5em;
+}
+.white_normal_link:hover{
+  color: rgb(158, 157, 157);
+  text-decoration: none;
+}
+
+.whitemassive{
+  color:#fff;
+  font-size:5.5em;
+  font-weight: bold;
+  font-family: 'Titillium Web', sans-serif;
+}
+.whitesubmassive{
+  color:#fff;
+  font-size:2.3em;
+  font-weight: bold;
+  /* padding: 0 10px; */
+}
+
+.title{
+  color:#F46F34;
+  font-size:.85em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.row, .col-6{
+  border:1px solid #fff;
+}
+
+.container{
+  padding:2%;
+}
+
+header > .row > .col-6:first-child img{
+  width: 10%;
+  text-align: left;
+}
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+  header > .row > .col-6:first-child img{
+    width: 30%;
+    text-align: left;
+  }
+  .whitemassive{
+    color:#fff;
+    font-size:4.5em;
+    font-weight:bold;
+    font-family: 'Titillium Web', sans-serif;
+  }
 }
