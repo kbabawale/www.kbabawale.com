@@ -18,6 +18,7 @@ function App() {
         >
           Learn React
         </a>
+        <p><i className="fab fa-facebook"></i> Hi</p>
       </header>
     </div>
   );
