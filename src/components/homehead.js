@@ -29,17 +29,21 @@ function HomeHead() {
                         </p>
                     </div>
                 </div>
-                <div className="row mt-5">
+                <div className="row mt-5 pb-5">
                     <div className="col-12 text-center">
                         <span className="grey_normal">Founder of </span>
                         <span className="bracket">&nbsp;&#123;&nbsp;</span>
                         <span className="founder-align">
-                            <img src={Logo3} />
-                            <span className="capgreen">Netpro Creations</span>
+                            <Link target="_blank" to="https://www.netprocreations.com">
+                                <img src={Logo3} />
+                                <span className="capgreen">Netpro Creations</span>
+                            </Link>
                         </span>
                         <span className="founder-align">
-                            <img src={Logo2} />
-                            <span className="capgreen">Lustitia Legal</span>
+                            <Link target="_blank" to="https://www.lustitia-legal.com">
+                                <img src={Logo2} />
+                                <span className="capgreen">Lustitia Legal</span>
+                            </Link>
                         </span>
                         <span className="bracket">&nbsp;&#125;&nbsp;</span>
                     </div>
