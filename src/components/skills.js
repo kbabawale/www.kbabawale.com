@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink, Link } from 'react-router-dom';
 
 function Skills() {
     return (
@@ -11,7 +10,7 @@ function Skills() {
                     </div>
                 </div>
                 <div className="row mt-5 py-5">
-                    <div className="col-md-2 col-sm-12">
+                    <div className="col-md-4 col-sm-12">
                         <div className="card card_1">
                             <div className="box">
                                 <div className="percent">
@@ -29,7 +28,7 @@ function Skills() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-2 col-sm-12">
+                    <div className="col-md-4 col-sm-12">
                         <div className="card card_2">
                             <div className="box">
                                 <div className="percent">
@@ -47,7 +46,7 @@ function Skills() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-2 col-sm-12">
+                    <div className="col-md-4 col-sm-12">
                         <div className="card card_3">
                             <div className="box">
                                 <div className="percent">
@@ -65,7 +64,9 @@ function Skills() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-2 col-sm-12">
+                </div>
+                <div className="row">
+                    <div className="col-md-4 col-sm-12">
                         <div className="card card_4">
                             <div className="box">
                                 <div className="percent">
@@ -83,7 +84,7 @@ function Skills() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-2 col-sm-12">
+                    <div className="col-md-4 col-sm-12">
                         <div className="card card_5">
                             <div className="box">
                                 <div className="percent">
@@ -101,7 +102,7 @@ function Skills() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-2 col-sm-12">
+                    <div className="col-md-4 col-sm-12">
                         <div className="card card_6">
                             <div className="box">
                                 <div className="percent">
@@ -122,6 +123,7 @@ function Skills() {
                 </div>
             </div>
         </div>
+
     )
 }
 
