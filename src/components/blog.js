@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import Header from './header';
 
 function Blog({ match }) {
+    const [url, setUrl] = useState(match.params.id);
     function navigate(url) {
-        window.location.href = url;
+        var win = window.open(url, '_blank');
+        if (win) {
+            //Browser has allowed it to be opened
+            win.focus();
+        } else {
+            //Browser has blocked it
+            alert('Please allow popups for this website');
+        }
     }
     return (
         <div>
@@ -31,7 +39,7 @@ function Blog({ match }) {
                             <span className=""><i className="fa fa-yin-yang"></i>&nbsp;</span>
                             <span className="">20th September 2019&nbsp;</span>
                             <span className=""><i className="fa fa-yin-yang"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                            <span className=""><Link target="_blank" to="#" onClick={() => navigate('https://www.facebook.com/kbabawale')}><i style={{ color: '#4267B2' }} className="fab fa-facebook"></i></Link>&nbsp;&nbsp;<Link target="_blank" to="https://twitter.com/kbabawale"><i style={{ color: '#1DA1F2' }} className="fab fa-twitter"></i></Link>&nbsp;&nbsp;<Link target="_blank" to="mailto:kbabawale@netprocreations.com"><i style={{ color: '#fff' }} className="fa fa-envelope"></i></Link>&nbsp;&nbsp;<Link target="_blank" to="https://www.linkedin.com/in/kbabawale"><i style={{ color: '#2867B2' }} className="fab fa-linkedin"></i></Link></span>
+                            <span className=""><Link target="_blank" to="#" onClick={() => navigate('https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer')}><i style={{ color: '#4267B2' }} className="fab fa-facebook"></i></Link>&nbsp;&nbsp;<Link target="_blank" to={"http://www.kbabawale.com/blog/" + url} > <i style={{ color: '#1DA1F2' }} className="fab fa-twitter"></i></Link>&nbsp;&nbsp;<Link target="_blank" to="mailto:kbabawale@netprocreations.com"><i style={{ color: '#fff' }} className="fa fa-envelope"></i></Link>&nbsp;&nbsp;<Link target="_blank" to="https://www.linkedin.com/in/kbabawale"><i style={{ color: '#2867B2' }} className="fab fa-linkedin"></i></Link></span>
                         </p>
                     </div>
                 </div>
@@ -59,7 +67,7 @@ function Blog({ match }) {
                 </div>
             </div>
 
-        </div>
+        </div >
     );
 
 

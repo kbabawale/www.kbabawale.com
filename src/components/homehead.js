@@ -13,7 +13,6 @@ function HomeHead() {
             //Browser has blocked it
             alert('Please allow popups for this website');
         }
-        // window.location.href = url;
     }
     return (
         <div className="container-fluid">
