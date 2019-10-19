@@ -15,7 +15,7 @@ function Blogs() {
                 {pathname === '/blogs' ? (
                     <div className="row">
                         <div className="col-12">
-                            <input type="text" className="input_text" style={{ background: '#222222' }} placeholder="Search" />
+                            <input type="text" className="input_text" style={{ background: '#222222' }} placeholder="Search by keywords" />
                         </div>
                     </div>
                 ) : ''}

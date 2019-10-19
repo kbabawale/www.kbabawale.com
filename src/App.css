@@ -7,6 +7,10 @@
   font-family: 'MyFont1';
   src: url('GillSansStd.otf'); /* IE9 Compat Modes */
 }
+@font-face {
+  font-family: 'MyFont2';
+  src: url('GillSansStd-Light.otf'); /* IE9 Compat Modes */
+}
 
 body{
   background: #333;
@@ -55,6 +59,18 @@ body{
   font-weight: bold;
   padding:0 2%;
 }
+.article_heading{
+  font-size:1.1em;
+  color:#00FFE2;
+  font-weight: bold;
+  padding:1% 0;
+}
+.article_text{
+  font-size: 1em;
+  color:#00FFE2;
+  font-weight: normal;
+  font-family: 'MyFont2', sans-serif;
+}
 .founder-align{
   position: relative;
   top:-8px;
@@ -71,6 +87,11 @@ body{
 .subtitle{
   color:#F46F34;
   font-size:1.0em;
+}
+.greentitle{
+  color:#12CB03;
+  font-size:.85em;
+  text-transform: uppercase;
 }
 
 .blog_post{

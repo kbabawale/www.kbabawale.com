@@ -4,6 +4,17 @@ import Logo3 from '../img/netpro.png';
 import { NavLink, Link } from 'react-router-dom';
 
 function HomeHead() {
+    function navigate(url) {
+        var win = window.open(url, '_blank');
+        if (win) {
+            //Browser has allowed it to be opened
+            win.focus();
+        } else {
+            //Browser has blocked it
+            alert('Please allow popups for this website');
+        }
+        // window.location.href = url;
+    }
     return (
         <div className="container-fluid">
             <div className="container">
@@ -21,11 +32,11 @@ function HomeHead() {
                         <p className="subtitle">E: kbabawale@netprocreations.com</p>
                         <p className="subtitle"><i className="fa fa-map-marker-alt"></i>&nbsp;Africa</p>
                         <p className="cc">
-                            <Link to="#" className="px-2"><i className="fab fa-facebook-square"></i></Link>
-                            <Link to="#" className="px-2"><i className="fab fa-github-square"></i></Link>
-                            <Link to="#" className="px-2"><i className="fab fa-twitter-square"></i></Link>
-                            <Link to="#" className="px-2"><i className="fab fa-instagram"></i></Link>
-                            <Link to="#" className="px-2"><i className="fab fa-linkedin"></i></Link>
+                            <Link to="#" onClick={() => navigate('https://www.facebook.com/kbabawale')} className="px-2"><i className="fab fa-facebook-square"></i></Link>
+                            <Link to="#" onClick={() => navigate('https://www.github.com/kbabawale')} className="px-2"><i className="fab fa-github-square"></i></Link>
+                            <Link to="#" onClick={() => navigate('https://twitter.com/kbabawale')} className="px-2"><i className="fab fa-twitter-square"></i></Link>
+                            <Link to="#" onClick={() => navigate('https://www.instagram.com/kbabawale')} className="px-2"><i className="fab fa-instagram"></i></Link>
+                            <Link to="#" onClick={() => navigate('https://www.linkedin.com/in/kbabawale')} className="px-2"><i className="fab fa-linkedin"></i></Link>
                         </p>
                     </div>
                 </div>

@@ -13,7 +13,7 @@ export default class Main extends React.Component {
                 <Switch>
                     <Route exact path="/" component={Homepage} />
                     <Route exact path="/blogs" component={BlogsPage} />
-                    <Route exact path="/blog/:blog" component={Blog} />
+                    <Route exact path="/blog/:id" component={Blog} />
                     <Route path="/reload" component={null} key="reload" />
                     <Route component={NotFound} />
                 </Switch>
