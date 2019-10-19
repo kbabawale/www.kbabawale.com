@@ -93,7 +93,6 @@ body{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border:1px solid green;
 }
 .blog_title p{
   position: relative;
@@ -101,10 +100,29 @@ body{
   z-index: 1000;
 }
 
-
-.container, .container-fluid, .row, .col-md-2, .col-6{
-  border:1px solid #fff;
+.tablee{
+  width:100%;
+  border:none;
 }
+.input_text, .input_detail, .input_submit{
+  width:100%;
+  height: 60px;
+  padding:10px;
+  margin-bottom:5px;
+  border:none;
+}
+.input_detail{
+  min-height:200px;
+  resize: none;
+}
+.input_submit{
+  background: #F46F34;
+  color:#fff;
+}
+
+/* .container, .container-fluid, .row, .col-md-2, .col-6, .col-md-6{
+  border:1px solid #fff;
+} */
 
 header{
   padding:4% 0;

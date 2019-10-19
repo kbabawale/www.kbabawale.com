@@ -12,12 +12,12 @@ function Blogs() {
                 </div>
                 <div className="row pt-5">
                     <div className="col-md-6 col-sm-12 col-xs-12 pb-2">
-                        {/* <div className="blog_post" style={{ backgroundImage: 'url(https://connectnigeria.com/articles/wp-content/uploads/2017/07/shutterstock_625260746.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-                            <div className="blog_title">
-                                <p className="whitesubmassive">The Power Of Global Networking</p>
-                                <p className="title">Technology</p>
-                            </div>
-                        </div> */}
+                        <div className="blog_title">
+                            <p className="whitesubmassive">The Power Of Global Networking</p>
+                            <p className="title">Technology</p>
+                            <div className="blog_post" style={{ backgroundImage: 'url(https://connectnigeria.com/articles/wp-content/uploads/2017/07/shutterstock_625260746.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}></div>
+                        </div>
+
                     </div>
                     <div className="col-md-6 col-sm-12 col-xs-12 pb-2">
                         <div className="blog_title">

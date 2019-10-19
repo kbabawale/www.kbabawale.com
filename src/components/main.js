@@ -5,6 +5,7 @@ import NotFound from './notfound';
 import Blog from './blog';
 import Blogs from './blogs';
 
+
 export default class Main extends React.Component {
     render() {
         return (
