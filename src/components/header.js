@@ -9,7 +9,7 @@ function Header() {
             <header className="container">
                 <div className="row">
                     <div className="col-6 pull-left"> <NavLink exact to="/"><img src={Logo} className="img-responsive" /></NavLink></div>
-                    <div className="col-6 text-right pt-2"><NavLink className="grey_normal_link" exact to="/blog">Blog</NavLink></div>
+                    <div className="col-6 text-right pt-2"><NavLink className="grey_normal_link" exact to="/blogs">Blog</NavLink></div>
                 </div>
             </header>
         </div>

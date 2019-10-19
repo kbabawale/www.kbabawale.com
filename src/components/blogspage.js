@@ -1,9 +1,6 @@
 import React from 'react';
 import Header from './header';
-import HomeHead from './homehead';
-import Skills from './skills';
 import Blogs from './blogs';
-import Contact from './contact';
 import { Helmet } from "react-helmet";
 
 function Homepage() {
@@ -11,14 +8,11 @@ function Homepage() {
         <div>
             <Helmet>
 
-                <title>Kolapo "Kay" Babawale</title>
+                <title>Blogs</title>
 
             </Helmet>
             <Header />
-            <HomeHead />
-            <Skills />
             <Blogs />
-            <Contact />
         </div>
     );
 }
