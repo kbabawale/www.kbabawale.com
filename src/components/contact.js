@@ -1,6 +1,60 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
+import { BaseURL } from './postData';
 
-function Contact() {
+function Contact(props) {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [subject, setSubject] = useState('');
+    const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const sendMessage = (e) => {
+        e.preventDefault();
+        setLoading(true);
+
+        const post = {
+            fullname: name,
+            email: email,
+            subject: subject,
+            message: message
+        };
+
+        fetch(BaseURL + 'user/email/send', {
+            method: 'POST',
+            body: JSON.stringify(post),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(
+                (response) => {
+                    if (response.status !== 200) {
+
+
+
+                    } else {
+                        // Examine the text in the response
+                        response.json().then((data) => {
+                            // console.log(data);
+
+
+                            document.getElementById("create-form").reset();
+                        });
+                    }
+
+
+                }
+            )
+            .catch(function (err) {
+                console.log(err);
+            });
+    }
+
+    useEffect(() => setName(xx => xx.trim()), [name]);
+    useEffect(() => setEmail(xx => xx.trim()), [email]);
+    useEffect(() => setSubject(xx => xx.trim()), [subject]);
+    useEffect(() => setMessage(xx => xx.trim()), [message]);
+
     return (
         <div className="skills text-center container-fluid">
             <div className="container">
@@ -19,29 +73,35 @@ function Contact() {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <input className="input_text" type="text" name="name" placeholder="Name" />
+                                        <input className="input_text" onChange={event => setName(event.target.value)} type="text" name="name" placeholder="Name" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input className="input_text" type="email" name="email" placeholder="Email Address" />
+                                        <input className="input_text" onChange={event => setEmail(event.target.value)} type="email" name="email" placeholder="Email Address" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input className="input_text" type="text" name="subject" placeholder="Subject" />
+                                        <input className="input_text" onChange={event => setSubject(event.target.value)} type="text" name="subject" placeholder="Subject" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <textarea className="input_detail" name="message" placeholder="Message"></textarea>
+                                        <textarea className="input_detail" onChange={event => setMessage(event.target.value)} name="message" placeholder="Message"></textarea>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <button className="input_submit" type="submit">Send Message</button>
+                                        <button className="input_submit" onClick={(event) => sendMessage(event)} type="submit">Send Message</button>
                                     </td>
                                 </tr>
+                                {loading ? (
+                                    <tr>
+                                        <td><img src="https://loading.io/spinners/wave/lg.wave-ball-preloader.gif" width="10%" /></td>
+                                    </tr>
+                                ) : ''}
+
                             </tbody>
                         </table>
                     </div>
