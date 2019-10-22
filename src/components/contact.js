@@ -7,6 +7,7 @@ function Contact(props) {
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
+    const [serverMessage, setServerMessage] = useState('');
 
     const sendMessage = (e) => {
         e.preventDefault();
@@ -19,35 +20,48 @@ function Contact(props) {
             message: message
         };
 
-        fetch(BaseURL + 'user/email/send', {
-            method: 'POST',
-            body: JSON.stringify(post),
-            headers: {
-                'content-type': 'application/json'
-            }
-        })
-            .then(
-                (response) => {
-                    if (response.status !== 200) {
-
-
-
-                    } else {
-                        // Examine the text in the response
-                        response.json().then((data) => {
-                            // console.log(data);
-
-
-                            document.getElementById("create-form").reset();
-                        });
-                    }
-
-
+        if (name == '' || email == '' || subject == '' || message == '') {
+            setServerMessage('Fill Up The Fields');
+            setLoading(false);
+        } else {
+            fetch(BaseURL + 'user/email/send', {
+                method: 'POST',
+                body: JSON.stringify(post),
+                headers: {
+                    'content-type': 'application/json'
                 }
-            )
-            .catch(function (err) {
-                console.log(err);
-            });
+            })
+                .then(
+                    (response) => {
+                        if (response.status !== 200) {
+                            response.json().then((data) => {
+                                setServerMessage(data.statusMsg);
+                                setLoading(false);
+                            });
+
+                        } else {
+                            // Examine the text in the response
+                            response.json().then((data) => {
+                                console.log(data);
+                                setServerMessage(data.statusMsg);
+                                setLoading(false);
+
+                                setName('');
+                                setSubject('');
+                                setMessage('');
+                                setEmail('');
+                            });
+                        }
+
+
+                    }
+                )
+                .catch(function (err) {
+                    console.log(err);
+                });
+        }
+
+
     }
 
     useEffect(() => setName(xx => xx.trim()), [name]);
@@ -71,6 +85,7 @@ function Contact(props) {
                         <p className="whitesubmassive">Send me a message</p>
                         <table className="tablee" border="0">
                             <tbody>
+
                                 <tr>
                                     <td>
                                         <input className="input_text" onChange={event => setName(event.target.value)} type="text" name="name" placeholder="Name" />
@@ -99,6 +114,11 @@ function Contact(props) {
                                 {loading ? (
                                     <tr>
                                         <td><img src="https://loading.io/spinners/wave/lg.wave-ball-preloader.gif" width="10%" /></td>
+                                    </tr>
+                                ) : ''}
+                                {serverMessage != '' ? (
+                                    <tr>
+                                        <td className="text-warning">{serverMessage}</td>
                                     </tr>
                                 ) : ''}
 
