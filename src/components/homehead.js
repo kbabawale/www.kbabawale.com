@@ -44,13 +44,13 @@ function HomeHead() {
                         <span className="grey_normal">Founder of </span>
                         <span className="bracket">&nbsp;&#123;&nbsp;</span>
                         <span className="founder-align">
-                            <Link target="_blank" to="https://www.netprocreations.com">
+                            <Link target="_blank" to="#" onClick={() => navigate('https://www.netprocreations.com')}>
                                 <img src={Logo3} />
                                 <span className="capgreen">Netpro Creations</span>
                             </Link>
                         </span>
                         <span className="founder-align">
-                            <Link target="_blank" to="https://www.lustitia-legal.com">
+                            <Link target="_blank" onClick={() => navigate('https://www.lustitia-legal.com')} to="#">
                                 <img src={Logo2} />
                                 <span className="capgreen">Lustitia Legal</span>
                             </Link>
