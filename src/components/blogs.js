@@ -5,9 +5,12 @@ import { BaseURL } from './postData';
 function Blogs() {
     const pathname = window.location.pathname;
     const [blogs, setBlogs] = useState([]);
+    const [homeblogs, sethomeblogs] = useState([]);
     const [searchterm, setSearchTerm] = useState('');
+    const [searchBlogs, setSearchBlogs] = useState('');
     const [serverMessage, setServerMessage] = useState('Loading...');
     const [loading, setLoading] = useState(false);
+    const [indices, setIndices] = useState([]);
 
     useEffect(() => {
         setLoading(true);
@@ -30,7 +33,10 @@ function Blogs() {
                         response.json().then((data) => {
                             setServerMessage(data.statusMsg);
                             setLoading(false);
-                            setBlogs(data.article);
+                            var blogg = data.article.filter(x => x.dummy != 'Dummy');
+                            setBlogs(blogg);
+                            setSearchBlogs(blogg);
+
                         });
                     }
 
@@ -41,69 +47,125 @@ function Blogs() {
                 console.log(err);
             });
 
+
     }, []);
 
     //filter for search and display based on results
-    const DATE_OPTIONS1 = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-
     useEffect(() => {
         var blogg = '';
-        if (searchterm != '' && blogs.length > 0) {
-            blogg = blogs.filter((propp) => {
-                // console.log(propp.topic.toLowerCase(), 'Test topic');
-                return propp.topic.toString().toLowerCase().indexOf(searchterm.toString().toLowerCase()) !== -1 || propp.category.toString().toLowerCase().indexOf(searchterm.toString().toLowerCase()) !== -1
-            });
-            // || new Date(propp.createdAt).toLocaleDateString('en-US', DATE_OPTIONS1).toLowerCase().indexOf(searchterm.toLowerCase()) !== -1
+        const searchRegex = searchterm && new RegExp(`${searchterm}`, "gi");
+
+        if (searchterm != '') {
+            blogg = blogs.filter((propp) =>
+                (!searchRegex || searchRegex.test(propp.topic) || searchRegex.test(propp.category))
+            );
+            setSearchBlogs(blogg);
+        } else {
+            setSearchBlogs(blogs);
         }
-        setBlogs(blogg);
     }, [searchterm]);
 
+    var luckyNumbers = (arrlength) => {
+        var num1 = Math.floor((Math.random() * arrlength) + 1);
+        return num1;
+    }
+
+    if (searchBlogs && searchBlogs.length > 0) {
+
+        if (pathname == '/') {
+            var uniqueTags = []; var newArt = [];
+            searchBlogs.map((item, i) => {
+                if (i < 2) {
+                    if (uniqueTags.indexOf(item._id) == -1) { //if not there
+                        uniqueTags.push(item._id);
+                        newArt.push(item);
+                    }
+                }
+            });
 
 
-    if (blogs.length > 0) {
-        var blogg = blogs.filter(x => x.dummy != 'Dummy');
-        return (
-            <div className="blogs text-center container-fluid">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12 py-5">
-                            <p className="title">Blog</p>
-                        </div>
-                    </div>
-                    {pathname === '/blogs' ? (
+            return (
+                <div className="blogs text-center container-fluid">
+                    <div className="container">
                         <div className="row">
-                            <div className="col-12">
-                                <input type="text" onChange={event => setSearchTerm(event.target.value)} className="input_text" style={{ background: '#222222' }} placeholder="Search by keywords" />
+                            <div className="col-12 py-5">
+                                <p className="title">Blog</p>
                             </div>
                         </div>
-                    ) : ''}
 
-                    <div className="row pt-5">
-                        {blogg.map(item => (
-                            <div key={item._id} className="col-md-6 col-sm-12 col-xs-12 pb-2">
-                                <div className="blog_title">
-                                    <p><Link className="whitesubmassive" to={"/blog/" + item._id}>{item.topic}</Link></p>
-                                    <p className="title">{item.category}</p>
-                                    <div className="blog_post" style={{ backgroundImage: 'url(https://connectnigeria.com/articles/wp-content/uploads/2017/07/shutterstock_625260746.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}></div>
+                        <div className="row pt-5">
+
+
+                            {newArt.length > 1 && newArt.map(item => (
+
+                                <div key={item} className="col-md-6 col-sm-12 col-xs-12 pb-2">
+                                    <div className="blog_title">
+                                        <p><Link className="whitesubmassive" to={"/blog/" + item._id}>{item.topic}</Link></p>
+                                        <p className="title">{item.category}</p>
+                                        <div className="blog_post" style={{ backgroundImage: 'url(https://connectnigeria.com/articles/wp-content/uploads/2017/07/shutterstock_625260746.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}></div>
+                                    </div>
+
                                 </div>
 
-                            </div>
+                            ))
+                            }
 
-                        ))}
+
+                        </div>
 
 
-                    </div>
-
-                    {pathname !== '/blogs' ? (
                         <div className="row pt-3">
                             <div className="col-12">
                                 <Link to="/blogs" className="grey_normal_link">View More...</Link>
                             </div>
                         </div>
-                    ) : ''}
+
+                    </div>
                 </div>
-            </div>
-        )
+
+
+
+            );
+        } else {
+            return (
+                <div className="blogs text-center container-fluid">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-12 py-5">
+                                <p className="title">Blog</p>
+                            </div>
+                        </div>
+
+                        <div className="row">
+                            <div className="col-12">
+                                <input type="text" onChange={event => setSearchTerm(event.target.value)} className="input_text" style={{ background: '#222222' }} placeholder="Search by keywords" />
+                            </div>
+                        </div>
+
+
+                        <div className="row pt-5">
+
+
+                            {searchBlogs.map(item => (
+                                <div key={item._id} className="col-md-6 col-sm-12 col-xs-12 pb-2">
+                                    <div className="blog_title">
+                                        <p><Link className="whitesubmassive" to={"/blog/" + item._id}>{item.topic}</Link></p>
+                                        <p className="title">{item.category}</p>
+                                        <div className="blog_post" style={{ backgroundImage: 'url(https://connectnigeria.com/articles/wp-content/uploads/2017/07/shutterstock_625260746.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}></div>
+                                    </div>
+
+                                </div>
+
+                            ))}
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            )
+        }
     } else {
         if (loading) {
             return (
