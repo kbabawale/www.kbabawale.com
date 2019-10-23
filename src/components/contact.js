@@ -23,6 +23,10 @@ function Contact(props) {
         if (name == '' || email == '' || subject == '' || message == '') {
             setServerMessage('Fill Up The Fields');
             setLoading(false);
+            setTimeout(() => {
+                setServerMessage('');
+            }, 5000);
+
         } else {
             fetch(BaseURL + 'user/email/send', {
                 method: 'POST',
@@ -45,6 +49,10 @@ function Contact(props) {
                                 // console.log(data);
                                 setServerMessage(data.statusMsg);
                                 setLoading(false);
+
+                                setTimeout(() => {
+                                    setServerMessage('');
+                                }, 15000);
 
                                 setName('');
                                 setSubject('');
