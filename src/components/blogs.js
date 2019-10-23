@@ -98,7 +98,7 @@ function Blogs() {
 
                             {newArt.length > 1 && newArt.map(item => (
 
-                                <div key={item} className="col-md-6 col-sm-12 col-xs-12 pb-2">
+                                <div key={item._id} className="col-md-6 col-sm-12 col-xs-12 pb-2">
                                     <div className="blog_title">
                                         <p><Link className="whitesubmassive" to={"/blog/" + item._id}>{item.topic}</Link></p>
                                         <p className="title">{item.category}</p>
