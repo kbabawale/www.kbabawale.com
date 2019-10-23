@@ -200,7 +200,7 @@ function Blogs() {
                             <div className="col-12 py-5 text-center">
                                 {/* <img src="https://loading.io/spinners/wave/lg.wave-ball-preloader.gif" width="10%" /> */}
                                 {serverMessage != '' ? (
-                                    <p className="text-warning">{serverMessage}</p>
+                                    <p className="text-warning">No Articles Found</p>
                                 ) : ''}
                             </div>
                         </div>
