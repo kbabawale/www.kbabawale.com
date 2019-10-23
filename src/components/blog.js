@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import Header from './header';
+import { BaseURL } from './postData';
 
 function Blog({ match }) {
     const [url, setUrl] = useState(match.params.id);
+    const [blogs, setBlogs] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [serverMessage, setServerMessage] = useState('');
+
     function navigate(url) {
         var win = window.open(url, '_blank');
         if (win) {
@@ -14,6 +19,43 @@ function Blog({ match }) {
             alert('Please allow popups for this website');
         }
     }
+
+    useEffect(() => {
+        fetch(BaseURL + 'article', {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(
+                (response) => {
+                    if (response.status !== 200) {
+                        response.json().then((data) => {
+                            setServerMessage('An Error Occurred');
+                            setLoading(false);
+                        });
+
+                    } else {
+                        // Examine the text in the response
+                        response.json().then((data) => {
+                            // console.log(data);
+                            // setServerMessage(data.statusMsg);
+                            setLoading(false);
+                            console.log(data.article);
+                            setBlogs(data.article);
+
+                        });
+                    }
+
+
+                }
+            )
+            .catch(function (err) {
+                console.log(err);
+            });
+
+    }, []);
+
     return (
         <div>
             <Header />

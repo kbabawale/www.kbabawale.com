@@ -42,7 +42,7 @@ function Contact(props) {
                         } else {
                             // Examine the text in the response
                             response.json().then((data) => {
-                                console.log(data);
+                                // console.log(data);
                                 setServerMessage(data.statusMsg);
                                 setLoading(false);
 
