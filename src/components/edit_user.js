@@ -22,6 +22,13 @@ function EditUser({ match }) {
     useEffect(() => setLastname(xx => xx.trim()), [lastname]);
     useEffect(() => setEmail(xx => xx.trim()), [email]);
 
+    useEffect(() => {
+        //prevent access to this page if not authorised
+        if (!sessionStorage.getItem('auth_kb_') || sessionStorage.getItem('auth_kb_').toString() != '1') {
+            props.history.push('/login');
+        }
+    }, []);
+
     const edituser = (e) => {
         alert('hi');
     }
