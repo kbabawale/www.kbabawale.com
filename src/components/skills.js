@@ -7,6 +7,7 @@ import Mongodb from '../img/mongodb.png';
 import Nodejs from '../img/nodejs.png';
 import Php from '../img/php.png';
 import Sql from '../img/sql.png';
+import Git from '../img/git.png';
 
 function Skills() {
     return (
@@ -56,11 +57,11 @@ function Skills() {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md-4 col-sm-12">
+                    <div className="col-md-3 col-sm-12">
                         <table border="0">
                             <tbody>
                                 <tr>
-                                    <td><img width="50%" src={Sql} /></td>
+                                    <td><img width="60%" src={Sql} /></td>
                                 </tr>
                                 <tr>
                                     <td><p className="whitesubmassive">MySQL</p></td>
@@ -68,11 +69,11 @@ function Skills() {
                             </tbody>
                         </table>
                     </div>
-                    <div className="col-md-4 col-sm-12">
+                    <div className="col-md-3 col-sm-12">
                         <table border="0">
                             <tbody>
                                 <tr>
-                                    <td><img width="50%" src={Mongodb} /></td>
+                                    <td><img width="60%" src={Mongodb} /></td>
                                 </tr>
                                 <tr>
                                     <td><p className="whitesubmassive">MongoDB</p></td>
@@ -80,7 +81,7 @@ function Skills() {
                             </tbody>
                         </table>
                     </div>
-                    <div className="col-md-4 col-sm-12">
+                    <div className="col-md-3 col-sm-12">
                         <table border="0">
                             <tbody>
                                 <tr>
@@ -88,6 +89,18 @@ function Skills() {
                                 </tr>
                                 <tr>
                                     <td><p className="whitesubmassive">Linux</p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="col-md-3 col-sm-12">
+                        <table border="0">
+                            <tbody>
+                                <tr>
+                                    <td><img width="60%" src={Git} /></td>
+                                </tr>
+                                <tr>
+                                    <td><p className="whitesubmassive">Git</p></td>
                                 </tr>
                             </tbody>
                         </table>
