@@ -24,7 +24,7 @@ function Login(props) {
                         </div>
                     </div>
                     <div className="row mt-5">
-                        <div className="col-12 text-left"><NavLink className="title" to="/">Add User</NavLink></div>
+                        <div className="col-12 text-left"><NavLink className="title" to="/users/add">Add User</NavLink></div>
                         <div className="col-12"><input type="text" style={{ background: '#222' }} className="input_text" placeholder="Search" /></div>
                     </div>
                     <div className="row mt-5">
