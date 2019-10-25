@@ -249,9 +249,31 @@ svg circle:nth-child(2){
   font-weight: bold;
 }
 
+/* DESKTOP */
+@media (min-width: 1024px){
+  .welcome{
+    float: left; 
+    /* border: 1px solid green; */
+  }
+  .menu-nav ul{
+    /* border:1px solid green; */
+    list-style-type: none;
+    float: right;
+    margin-top: -4%;
+    margin-left: 2%;
+  }
+  .menu-nav ul li{
+    display: inline;
+    padding: 0 15px;
+  }
+  
+}
+
 /* TABLET */
 @media (min-width: 768px) and (max-width: 1024px) {
-  
+  .menu-nav{
+    display: none;
+  }
   .whitemassive{
     color:#fff;
     font-size:4.5em;
@@ -263,6 +285,9 @@ svg circle:nth-child(2){
 
 /* MOBILE */
 @media (min-width: 320px) and (max-width: 480px) {
+  .menu-nav{
+    display: none;
+  }
   header{
     padding:7% 0;
   }
