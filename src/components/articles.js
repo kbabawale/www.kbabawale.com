@@ -8,6 +8,13 @@ function Articles(props) {
     const [loading, setLoading] = useState(false);
     const [serverMessage, setServerMessage] = useState('');
 
+    useEffect(() => {
+        //prevent access to this page if not authorised
+        if (!sessionStorage.getItem('auth_kb_') || sessionStorage.getItem('auth_kb_').toString() != '1') {
+            props.history.push('/login');
+        }
+    }, []);
+
     return (
         <React.Fragment>
             <Helmet>
