@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BaseURL } from './postData';
-import Header from './header';
+import Header from './header2';
 import { Helmet } from "react-helmet";
 
 function AddUser(props) {
@@ -46,12 +46,12 @@ function AddUser(props) {
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input style={{ background: '#222' }} className="input_text" onChange={event => setEmail(event.target.value)} type="text" name="firstname" placeholder="Firstname" />
+                                            <input style={{ background: '#222' }} className="input_text" onChange={event => setFirstname(event.target.value)} type="text" name="firstname" placeholder="Firstname" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input style={{ background: '#222' }} className="input_text" onChange={event => setEmail(event.target.value)} type="text" name="lastname" placeholder="Lastname" />
+                                            <input style={{ background: '#222' }} className="input_text" onChange={event => setLastname(event.target.value)} type="text" name="lastname" placeholder="Lastname" />
                                         </td>
                                     </tr>
                                     <tr>

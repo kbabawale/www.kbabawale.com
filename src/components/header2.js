@@ -34,7 +34,7 @@ function Header2() {
                                         <NavLink className="subtitle" exact to="/users">Users</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink className="subtitle" exact to="/blogs">Articles</NavLink>
+                                        <NavLink className="subtitle" exact to="/articles">Articles</NavLink>
                                     </li>
                                     <li>
                                         <NavLink className="subtitle" exact to="/">Logout</NavLink>
