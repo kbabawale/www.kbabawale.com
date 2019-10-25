@@ -3,7 +3,7 @@ import { BaseURL } from './postData';
 import Header from './header2';
 import { Helmet } from "react-helmet";
 
-function EditUser({ match }) {
+function EditUser({ match, history }) {
     const [url, setUrl] = useState(match.params.id);
     const [email, setEmail] = useState('');
     const [firstname, setFirstname] = useState('');
@@ -25,7 +25,7 @@ function EditUser({ match }) {
     useEffect(() => {
         //prevent access to this page if not authorised
         if (!sessionStorage.getItem('auth_kb_') || sessionStorage.getItem('auth_kb_').toString() != '1') {
-            props.history.push('/login');
+            history.push('/login');
         }
     }, []);
 

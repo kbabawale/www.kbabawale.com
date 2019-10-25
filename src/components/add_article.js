@@ -38,7 +38,7 @@ function AddArticle(props) {
                 <div className="container">
                     <div className="row">
                         <div className="col-12 pt-5">
-                            <p className="title">Users</p>
+                            <p className="title">Articles</p>
                         </div>
                     </div>
                     <div className="row mt-5">
