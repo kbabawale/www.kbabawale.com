@@ -1,4 +1,12 @@
 import React, { Component } from 'react';
+import ReactJS from '../img/reactjs.png';
+import Angular from '../img/angular.png';
+import Devops from '../img/devops.png';
+import Electron from '../img/electron.png';
+import Mongodb from '../img/mongodb.png';
+import Nodejs from '../img/nodejs.png';
+import Php from '../img/php.png';
+import Sql from '../img/sql.png';
 
 function Skills() {
     return (
@@ -9,7 +17,83 @@ function Skills() {
                         <p className="title">skills</p>
                     </div>
                 </div>
-                <div className="row mt-5 py-5">
+                <div className="row py-5">
+                    <div className="col-md-4 col-sm-12">
+                        <table border="0">
+                            <tbody>
+                                <tr>
+                                    <td><img width="50%" src={Angular} /></td>
+                                </tr>
+                                <tr>
+                                    <td><p className="whitesubmassive">Angular</p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="col-md-4 col-sm-12">
+                        <table border="0">
+                            <tbody>
+                                <tr>
+                                    <td><img width="50%" src={ReactJS} /></td>
+                                </tr>
+                                <tr>
+                                    <td><p className="whitesubmassive">ReactJS</p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="col-md-4 col-sm-12">
+                        <table border="0">
+                            <tbody>
+                                <tr>
+                                    <td><img width="50%" src={ReactJS} /></td>
+                                </tr>
+                                <tr>
+                                    <td><p className="whitesubmassive">React Native</p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 col-sm-12">
+                        <table border="0">
+                            <tbody>
+                                <tr>
+                                    <td><img width="50%" src={Sql} /></td>
+                                </tr>
+                                <tr>
+                                    <td><p className="whitesubmassive">MySQL</p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="col-md-4 col-sm-12">
+                        <table border="0">
+                            <tbody>
+                                <tr>
+                                    <td><img width="50%" src={Mongodb} /></td>
+                                </tr>
+                                <tr>
+                                    <td><p className="whitesubmassive">MongoDB</p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="col-md-4 col-sm-12">
+                        <table border="0">
+                            <tbody>
+                                <tr>
+                                    <td><img width="50%" src={Devops} /></td>
+                                </tr>
+                                <tr>
+                                    <td><p className="whitesubmassive">Linux</p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {/* <div className="row mt-5 py-5">
                     <div className="col-md-4 col-sm-12">
                         <div className="card card_1">
                             <div className="box">
@@ -120,7 +204,7 @@ function Skills() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
 
