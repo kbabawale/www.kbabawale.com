@@ -18,13 +18,53 @@ function AddUser(props) {
 
     useEffect(() => {
         //prevent access to this page if not authorised
-        if (!sessionStorage.getItem('auth_kb_') || sessionStorage.getItem('auth_kb_').toString() != '1') {
+        if (!sessionStorage.getItem('auth_kb_')) {
             props.history.push('/login');
         }
     }, []);
 
     const adduser = (e) => {
-        alert('hi');
+        if (firstname == '' || lastname == '' || email == '') {
+            setServerMessage('Fill Up The Fields');
+        } else {
+            setLoading(true);
+            const post = {
+                firstname: firstname,
+                lastname: lastname,
+                email: email,
+                password: 'password'
+            }
+            fetch(BaseURL + 'user', {
+                method: 'POST',
+                body: JSON.stringify(post),
+                headers: {
+                    'content-type': 'application/json',
+                    'API_KEY': sessionStorage.getItem('Xs').toString()
+                }
+            }).then(
+                (response) => {
+                    if (response.status !== 200) {
+                        response.json().then((data) => {
+                            setLoading(false);
+                            setServerMessage(data.statusMsg);
+                        })
+                    } else {
+                        // Examine the text in the response
+                        response.json().then((data) => {
+                            setLoading(false);
+                            props.history.push('/users');
+                        });
+                    }
+
+
+                }
+            )
+                .catch(function (err) {
+                    console.log(err);
+                });
+        }
+
+
     }
 
     return (

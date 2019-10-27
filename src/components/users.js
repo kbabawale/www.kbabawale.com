@@ -9,7 +9,7 @@ function Login(props) {
     const [users, setUsers] = useState([]);
     const [users2, setUsers2] = useState([]);
     const [searchterm, setSearchterm] = useState([]);
-    const [, forceUpdate] = useState();
+
 
     useEffect(() => {
         //prevent access to this page if not authorised
@@ -53,11 +53,11 @@ function Login(props) {
         props.history.push('/user/edit/' + id);
     }
     let goToDelete = (id) => {
-        // props.history.push('/user/edit/' + id);
+
         var ok = window.confirm('Are you sure?');
         if (ok) {
             setLoading(true);
-            fetch(BaseURL + 'user?id=' + id, {
+            fetch(BaseURL + 'user/' + id, {
                 method: 'DELETE',
                 headers: {
                     'content-type': 'application/json',
@@ -74,7 +74,7 @@ function Login(props) {
                         response.json().then((data) => {
                             setLoading(false);
                             alert(data.statusMsg);
-                            forceUpdate();
+                            window.location.reload();
                         });
                     }
 
