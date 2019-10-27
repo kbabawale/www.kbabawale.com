@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BaseURL } from './postData';
+import { BaseURL, getUser } from './postData';
 import Header from './header';
 import { Helmet } from "react-helmet";
 
@@ -13,9 +13,56 @@ function Login(props) {
 
     useEffect(() => setPassword(xx => xx.trim()), [password]);
     useEffect(() => setEmail(xx => xx.trim()), [email]);
+    useEffect(() => {
+        if (sessionStorage.getItem('auth_kb_')) {
+            props.history.push('/users');
+        }
+    }, []);
 
     const login = (e) => {
-        alert('hi');
+        e.preventDefault();
+
+        const post = {
+            email: email,
+            password: password
+        }
+
+        fetch(BaseURL + 'login', {
+            method: 'POST',
+            body: JSON.stringify(post),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(
+                (response) => {
+                    if (response.status !== 200) {
+                        response.json().then((data) => {
+                            setServerMessage(data.statusMsg);
+                            setLoading(false);
+                            setTimeout(() => {
+                                setServerMessage('');
+                            }, 10000);
+                        })
+                    } else {
+                        // Examine the text in the response
+                        response.json().then((data) => {
+                            //set store values and redirect
+                            getUser(data.user.id.toString(), data.user.token.toString());
+
+                            sessionStorage.setItem('init_v', data.user.id.toString());
+                            setTimeout(() => { props.history.push("/users"); }, 500);
+
+
+                        });
+                    }
+
+
+                }
+            )
+            .catch(function (err) {
+                console.log(err);
+            });
     }
 
     return (
@@ -47,7 +94,7 @@ function Login(props) {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input style={{ background: '#fff' }} className="input_text" onChange={event => setEmail(event.target.value)} type="password" name="password" placeholder="Password" />
+                                            <input style={{ background: '#fff' }} className="input_text" onChange={event => setPassword(event.target.value)} type="password" name="password" placeholder="Password" />
                                         </td>
                                     </tr>
                                     <tr>

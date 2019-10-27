@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Logo from '../img/logo-main.png';
 import { NavLink } from 'react-router-dom';
-// import "../App.css";
+import { BaseURL, removeUser } from './postData';
 
-function Header2() {
+function Header2(props) {
     const [nav, setNav] = useState(true);
 
     const toggleMobileMenu = () => {
@@ -18,6 +18,12 @@ function Header2() {
             setNav(false);
         }
     }, []);
+
+    const logout = () => {
+        removeUser();
+
+        window.location.href = '/login';
+    }
 
     return (
         <div className="container-fluid">
@@ -37,7 +43,7 @@ function Header2() {
                                         <NavLink className="subtitle" exact to="/articles">Articles</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink className="subtitle" exact to="/">Logout</NavLink>
+                                        <NavLink className="subtitle" exact to="#" onClick={() => { logout(); }}>Logout</NavLink>
                                     </li>
                                 </ul>
                             </div>
