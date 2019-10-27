@@ -9,6 +9,7 @@ function Login(props) {
     const [users, setUsers] = useState([]);
     const [users2, setUsers2] = useState([]);
     const [searchterm, setSearchterm] = useState([]);
+    const [, forceUpdate] = useState();
 
     useEffect(() => {
         //prevent access to this page if not authorised
@@ -47,6 +48,44 @@ function Login(props) {
             });
 
     }, []);
+
+    let goToEdit = (id) => {
+        props.history.push('/user/edit/' + id);
+    }
+    let goToDelete = (id) => {
+        // props.history.push('/user/edit/' + id);
+        var ok = window.confirm('Are you sure?');
+        if (ok) {
+            setLoading(true);
+            fetch(BaseURL + 'user?id=' + id, {
+                method: 'DELETE',
+                headers: {
+                    'content-type': 'application/json',
+                    'API_KEY': sessionStorage.getItem('Xs').toString()
+                }
+            }).then(
+                (response) => {
+                    if (response.status !== 200) {
+                        response.json().then((data) => {
+                            alert('An Error Occurred');
+                        })
+                    } else {
+                        // Examine the text in the response
+                        response.json().then((data) => {
+                            setLoading(false);
+                            alert(data.statusMsg);
+                            forceUpdate();
+                        });
+                    }
+
+
+                }
+            )
+                .catch(function (err) {
+                    console.log(err);
+                });
+        }
+    }
 
 
     //filter for search and display based on results
@@ -93,8 +132,8 @@ function Login(props) {
                                         <div className="col-md-4 col-sm-4"><NavLink className="grey_normal" to="#">{x.firstname}&nbsp;{x.lastname}</NavLink></div>
                                         <div className="col-md-3 col-sm-4">{x.email}</div>
                                         <div className="col-md-3 col-sm-0">{new Date(x.createdAt).toLocaleDateString('en-US', DATE_OPTIONS)}</div>
-                                        <div className="col-md-1 col-sm-1"><i style={{ color: '#fff' }} className="fa fa-edit"></i></div>
-                                        <div className="col-md-1 col-sm-2"><i style={{ color: '#F46F34' }} className="fa fa-trash"></i></div>
+                                        <div className="col-md-1 col-sm-1"><span onClick={() => { goToEdit(x._id); }}><i style={{ color: '#fff' }} className="fa fa-edit"></i></span></div>
+                                        <div className="col-md-1 col-sm-2"><span onClick={() => { goToDelete(x._id); }}><i style={{ color: '#F46F34' }} className="fa fa-trash"></i></span></div>
                                     </div>
                                 )}
 
