@@ -176,6 +176,15 @@ function Blogs() {
                                 <p className="title">Blog</p>
                             </div>
                         </div>
+                        {pathname != '/' ? (
+                            <div className="row">
+                                <div className="col-12">
+                                    <input type="text" onChange={event => setSearchTerm(event.target.value)} className="input_text" style={{ background: '#222222' }} placeholder="Search by keywords" />
+                                </div>
+                            </div>
+                        ) : ''}
+
+
                         <div className="row">
                             <div className="col-12 py-5 text-center">
                                 <img src="https://loading.io/spinners/wave/lg.wave-ball-preloader.gif" width="10%" />
@@ -196,6 +205,14 @@ function Blogs() {
                                 <p className="title">Blog</p>
                             </div>
                         </div>
+                        {pathname != '/' ? (
+                            <div className="row">
+                                <div className="col-12">
+                                    <input type="text" onChange={event => setSearchTerm(event.target.value)} className="input_text" style={{ background: '#222222' }} placeholder="Search by keywords" />
+                                </div>
+                            </div>
+                        ) : ''}
+
                         <div className="row">
                             <div className="col-12 py-5 text-center">
                                 {/* <img src="https://loading.io/spinners/wave/lg.wave-ball-preloader.gif" width="10%" /> */}
