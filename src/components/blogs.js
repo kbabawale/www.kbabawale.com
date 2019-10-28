@@ -102,7 +102,7 @@ function Blogs() {
                                     <div className="blog_title">
                                         <p><Link className="whitesubmassive" to={"/blog/" + item._id}>{item.topic}</Link></p>
                                         <p className="title">{item.category}</p>
-                                        <div className="blog_post" style={{ backgroundImage: 'url(https://connectnigeria.com/articles/wp-content/uploads/2017/07/shutterstock_625260746.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}></div>
+                                        <div className="blog_post" style={{ backgroundImage: `url(${item.article_image})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}></div>
                                     </div>
 
                                 </div>
@@ -151,7 +151,7 @@ function Blogs() {
                                     <div className="blog_title">
                                         <p><Link className="whitesubmassive" to={"/blog/" + item._id}>{item.topic}</Link></p>
                                         <p className="title">{item.category}</p>
-                                        <div className="blog_post" style={{ backgroundImage: 'url(https://connectnigeria.com/articles/wp-content/uploads/2017/07/shutterstock_625260746.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}></div>
+                                        <div className="blog_post" style={{ backgroundImage: `url(${item.article_image})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}></div>
                                     </div>
 
                                 </div>
