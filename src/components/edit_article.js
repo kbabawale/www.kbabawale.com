@@ -15,9 +15,9 @@ function EditArticle({ match, history }) {
     const [loading, setLoading] = useState(false);
     const [serverMessage, setServerMessage] = useState('');
 
-    useEffect(() => setTopic(xx => xx.trim()), [topic]);
-    useEffect(() => setCategory(xx => xx.trim()), [category]);
-    useEffect(() => setBody(xx => xx.trim()), [body]);
+    // useEffect(() => setTopic(xx => xx.trim()), [topic]);
+    // useEffect(() => setCategory(xx => xx.trim()), [category]);
+    // useEffect(() => setBody(xx => xx.trim()), [body]);
 
     useEffect(() => {
         //prevent access to this page if not authorised
@@ -92,8 +92,15 @@ function EditArticle({ match, history }) {
         } else {
             setLoading(true);
 
+            const post = {
+                topic:  topic,
+                details: body,
+                category: category
+            }
+
             fetch(BaseURL + 'article/' + url, {
                 method: 'PUT',
+                body: JSON.stringify(post),
                 headers: {
                     'content-type': 'application/json',
                     'API_KEY': sessionStorage.getItem('Xs').toString()
@@ -120,28 +127,10 @@ function EditArticle({ match, history }) {
                     console.log(err);
                 });
 
-
-
-            // axios.post(BaseURL + 'article/edit', data, { ...defaultOptions })
-            //     .then(res => { // then print response status
-
-            //         if (res.status == 200) {
-            //             setLoading(false);
-            //             setServerMessage(res.statusMsg);
-
-            //         } else {
-            //             setLoading(false);
-            //             setServerMessage(res.statusMsg);
-
-            //         }
-
-            //     }).catch(e => {
-            //         console.log(e);
-            //     })
-
-
         }
     }
+
+
 
     if (articles && articles.length > 0) {
         return (
@@ -166,16 +155,17 @@ function EditArticle({ match, history }) {
                         <div className="row mt-5">
 
                             <div className="col-md-12 col-sm-12">
+                                
                                 <table className="tablee" border="0">
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <input style={{ background: '#222' }} className="input_text" onChange={event => setTopic(event.target.value)} value={topic} type="text" name="topic" placeholder="Topic" />
+                                                <input style={{ background: '#222' }} className="input_text" onChange={(event) => setTopic(event.target.value)} value={topic} type="text" name="topic" placeholder="Topic" />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <select style={{ background: '#222' }} className="input_text" onChange={event => setCategory(event.target.value)} type="text" name="category">
+                                                <select style={{ background: '#222' }} className="input_text" onChange={(event) => setCategory(event.target.value)} name="category">
                                                     <option value="0">Select One:</option>
 
                                                     {categories.length > 0 && categories.map((x) =>
@@ -185,14 +175,14 @@ function EditArticle({ match, history }) {
                                                 </select>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        {/* <tr>
                                             <td>
                                                 <input style={{ background: '#222' }} className="input_text" onChange={event => setImage(event.target.value)} type="file" name="image" />
                                             </td>
-                                        </tr>
+                                        </tr> */}
                                         <tr>
                                             <td>
-                                                <textarea style={{ background: '#222', resize: 'none', minHeight: '300px' }} className="input_text" value={body} onChange={event => setBody(event.target.value)} name="body" placeholder="Body"></textarea>
+                                                <textarea style={{ background: '#222', resize: 'none', minHeight: '300px' }} className="input_text" value={body} onChange={(event) => setBody(event.target.value)} name="body" placeholder="Body"></textarea>
                                             </td>
                                         </tr>
                                         <tr>
@@ -213,6 +203,7 @@ function EditArticle({ match, history }) {
 
                                     </tbody>
                                 </table>
+                                
                             </div>
 
                         </div>

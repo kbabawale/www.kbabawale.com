@@ -18,9 +18,9 @@ function EditUser({ match, history }) {
 
 
 
-    useEffect(() => setFirstname(xx => xx.trim()), [firstname]);
-    useEffect(() => setLastname(xx => xx.trim()), [lastname]);
-    useEffect(() => setEmail(xx => xx.trim()), [email]);
+    // useEffect(() => setFirstname(xx => xx.trim()), [firstname]);
+    // useEffect(() => setLastname(xx => xx.trim()), [lastname]);
+    // useEffect(() => setEmail(xx => xx.trim()), [email]);
 
     useEffect(() => {
         //prevent access to this page if not authorised
