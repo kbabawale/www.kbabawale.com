@@ -116,7 +116,7 @@ function Blogs() {
 
                         <div className="row pt-3">
                             <div className="col-12">
-                                <Link to="/blogs" className="grey_normal_link">View More...</Link>
+                                <Link to="/blogs" className="grey_normal_link">View Articles...</Link>
                             </div>
                         </div>
 
