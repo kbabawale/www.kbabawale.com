@@ -17,7 +17,7 @@ function AddArticle(props) {
 
     useEffect(() => {
         //prevent access to this page if not authorised
-        if (!sessionStorage.getItem('auth_kb_') || sessionStorage.getItem('auth_kb_').toString() != '1') {
+        if (!sessionStorage.getItem('auth_kb_')) {
             props.history.push('/login');
         }
     }, []);
